@@ -85,6 +85,14 @@ app.get('/contatos', function(request, response) {
   response.send(contatos);
 });
 
+app.get('/contatos/:id', function(request, response) {
+  var id = request.params.id;
+  var contato = contatos.filter(function(contato) {
+    return contato.id == id;
+  })[0];
+  response.send(contato);
+});
+
 app.post('/contatos', function(request, response) {
   var contato = request.body;
   contato.id = uuid.v1();
