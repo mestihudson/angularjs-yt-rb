@@ -86,11 +86,13 @@ app.get('/contatos', function(request, response) {
 });
 
 app.get('/contatos/:id', function(request, response) {
-  var id = request.params.id;
-  var contato = contatos.filter(function(contato) {
-    return contato.id == id;
-  })[0];
-  response.send(contato);
+  contatos.forEach(function(contato) {
+    if(contato.id == request.params.id) {
+      response.json(contato);
+      return;
+    }
+  });
+  response.status(404);
 });
 
 app.post('/contatos', function(request, response) {

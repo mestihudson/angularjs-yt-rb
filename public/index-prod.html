@@ -1,0 +1,17 @@
+<html ng-app="listaTelefonica">
+  <head>
+    <title>Lista Telefônica</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <script src="js/all.min.js"></script>
+  </head>
+  <body>
+    <div class="jumbotron" ng-show="loading">
+      <h5>Carregando, por favor aguarde...</h5>
+    </div>
+    <div ng-hide="loading">
+      <div ng-view></div>
+      <div ng-include="'view/footer.html'"></div>
+    </div>
+  </body>
+</html>

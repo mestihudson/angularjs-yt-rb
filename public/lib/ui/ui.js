@@ -25,7 +25,7 @@ angular.module("ui").directive("uiAccordion", function() {
   return {
     templateUrl: "view/ui-accordion.html",
     scope: {
-      title: "@"
+      title: "="
     },
     require: "^uiAccordions",
     transclude: true,
