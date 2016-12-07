@@ -3,7 +3,8 @@ module.exports = function(grunt) {
     clean: {
       temp: [
         'dist/js/libs.js',
-        'dist/js/scripts*.js'
+        'dist/js/scripts*.js',
+        'dist/index.min.html'
       ],
       all: ['dist/']
     },
@@ -67,16 +68,23 @@ module.exports = function(grunt) {
         removeComments: true,
         collapseWhitespace: true
       },
-      views: {
-        expand: true,
-        cwd: 'view',
-        src: ['*.html'],
-        dest: 'dist/view'
+      partials: {
+        files: [{
+          expand: true,
+          cwd: 'view',
+          src: ['*.html'],
+          dest: 'dist/view'
+        }]
+      },
+      principal: {
+        files: {
+          'dist/index.min.html':'index-prod.html'
+        }
       }
     },
     copy: {
       all: {
-        src: 'index-prod.html',
+        src: 'dist/index.min.html',
         dest: 'dist/index.html'
       }
     }
@@ -91,5 +99,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-ng-annotate');
 
-  grunt.registerTask('default', ['clean:all', 'jshint', 'concat:scripts', 'ngAnnotate:app', 'concat:libs', 'uglify', 'cssmin', 'htmlmin', 'concat:all', 'copy', 'clean:temp']);
+  grunt.registerTask('default', ['clean:all', 'jshint', 'concat:scripts', 'ngAnnotate:app', 'concat:libs', 'uglify', 'cssmin', 'htmlmin:partials', 'htmlmin:principal', 'concat:all', 'copy', 'clean:temp']);
 };
