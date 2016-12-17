@@ -1,4 +1,4 @@
-angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope, contatos, operadoras, serialGenerator) {
+angular.module("listaTelefonica").controller("lista-telefonica-controller", function($scope, contatos, operadoras, serialGenerator) {
   $scope.titulo = "Lista Telefônica";
   $scope.contatos = contatos.data;
   $scope.operadoras = operadoras.data;

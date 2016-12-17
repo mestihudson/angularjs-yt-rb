@@ -1,4 +1,4 @@
-angular.module("listaTelefonica").factory("errorInterceptor", function($q, $location) {
+angular.module("listaTelefonica").factory("error-interceptor", function($q, $location) {
   return {
     responseError: function(rejection) {
       if(rejection.status === 404) {

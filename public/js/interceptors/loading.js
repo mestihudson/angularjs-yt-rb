@@ -1,4 +1,4 @@
-angular.module("listaTelefonica").factory("loadingInterceptor", function($q, $rootScope, $timeout) {
+angular.module("listaTelefonica").factory("loading-interceptor", function($q, $rootScope, $timeout) {
   return {
     request: function(config) {
       $rootScope.loading = true;
